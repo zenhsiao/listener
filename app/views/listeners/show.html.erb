@@ -1,0 +1,8 @@
+<ul>
+	<li><%= @listener.name %></li>
+	<li><%= image_tag @listener.photo.url(:medium) %></li>
+	<li><%= @listener.description %></li>
+	<li><%= number_to_currency(@listener.price, precision: 0) %></li>
+</ul>
+
+<%= link_to "home", listeners_path %> 

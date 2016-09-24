@@ -1,0 +1,4 @@
+<% @listeners.each do |l| %>
+<%= link_to l.name, listener_path(l) %>
+<%= image_tag l.photo.url(:medium) %>
+<% end %>

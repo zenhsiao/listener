@@ -1,0 +1,15 @@
+<ul>
+<% @listeners.each do |l| %>
+	<li>
+	<%= l.name %>
+	<%= l.description %>
+  <%= image_tag l.photo.url(:medium) %>
+	<%= link_to "edit", edit_admin_listener_path(l) %>
+	<%= link_to "delete", admin_listener_path(l), :method => "delete" %> 
+	</li>
+<% end %>
+</ul>
+
+<%= link_to "new", new_admin_listener_path %>
+
+<%= link_to "前台", listeners_path %>
