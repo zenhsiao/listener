@@ -1,0 +1,6 @@
+<% @availabletimes.each do |t| %>  
+  <li><%= t.time_start %>
+  <%= link_to "delete", admin_availabletime_path(t),:method => :delete %></li>
+<% end %>
+
+<%= link_to "new", new_admin_availabletime_path %>

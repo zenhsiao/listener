@@ -1,0 +1,3 @@
+<%= form_for @order, :url => user_orders_path(current_user, :listener_id => @listener.id) do |f| %>
+	<% render :partial => 'form', :locals => {:f => f, :l => @listener} %>
+<% end %>

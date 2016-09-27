@@ -31,7 +31,7 @@ class Admin::ListenersController < ApplicationController
 
 	private
 	def listener_params
-		params.require(:listener).permit(:name,:description,:skype_id,:price, :photo)
+		params.require(:listener).permit(:name,:description,:skype_id,:price, :photo, :availabletime_ids=>[])
 	end
 
 	def find_listener

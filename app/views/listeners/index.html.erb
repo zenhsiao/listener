@@ -2,3 +2,5 @@
 <%= link_to l.name, listener_path(l) %>
 <%= image_tag l.photo.url(:medium) %>
 <% end %>
+
+<%= link_to "訂單紀錄", user_orders_path(current_user) if current_user %>

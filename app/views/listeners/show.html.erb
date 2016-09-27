@@ -5,4 +5,6 @@
 	<li><%= number_to_currency(@listener.price, precision: 0) %></li>
 </ul>
 
+<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id) %> 
+
 <%= link_to "home", listeners_path %> 

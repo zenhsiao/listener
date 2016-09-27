@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924163632) do
+ActiveRecord::Schema.define(version: 20160925163310) do
+
+  create_table "availabletimes", force: :cascade do |t|
+    t.datetime "time_start"
+    t.datetime "time_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "listener_timeships", force: :cascade do |t|
+    t.integer  "listener_id"
+    t.integer  "availabletime_id"
+    t.integer  "order_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["listener_id"], name: "index_listener_timeships_on_listener_id"
+    t.index ["order_id"], name: "index_listener_timeships_on_order_id"
+  end
 
   create_table "listeners", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +41,16 @@ ActiveRecord::Schema.define(version: 20160924163632) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "listener_id"
+    t.integer  "user_id"
+    t.integer  "price"
+    t.integer  "quantity"
+    t.integer  "subtotal"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

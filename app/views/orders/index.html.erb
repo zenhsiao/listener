@@ -1,0 +1,10 @@
+訂單列表
+<% @orders.each do |o| %>
+<li>
+<%= link_to o.id, user_order_path(current_user,o) %>
+<%= link_to "edit", edit_user_order_path(current_user,o) %>
+<%= link_to "delete", user_order_path(current_user,o), :method => "delete" %>
+</li>
+<% end %>
+
+<%= link_to "home", listeners_path %>

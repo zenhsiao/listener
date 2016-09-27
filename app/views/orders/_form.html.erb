@@ -1,0 +1,6 @@
+
+	<%= f.label :quantity %>
+	<%= f.text_field :quantity %>
+	<%= f.select :listener_timeship_ids, l.listener_timeships.unorder.map{ |x| [ x.availabletime.time_start, x.id] }, {}, :multiple => true %>
+	<%= f.submit %>
+

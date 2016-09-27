@@ -1,0 +1,16 @@
+<ul>
+	<li><%= @order.id%></li>
+	<li><%= image_tag @order.listener.photo.url(:medium) %></li>
+	<li><%= @order.listener.description %></li>
+	<li><%= number_to_currency(@order.listener.price, precision: 0) %></li>
+	<li><%= @order.quantity %></li>
+	<li><%= number_to_currency(@order.subtotal, precision: 0) %></li>
+	
+		<% @order.listener_timeships.each do |listener_timeship| %>
+			<li><%= listener_timeship.availabletime.time_start %></li>
+		<% end %>
+	
+</ul>
+
+
+<%= link_to "home", listeners_path %> 
