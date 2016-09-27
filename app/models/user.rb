@@ -6,6 +6,12 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :orders, :dependent => :destroy
+  has_many :likeships, :dependent => :destroy
+  has_many :liked_listeners, :through => :likeships, :source => :listener
+
+  def likedListener?(listener)
+    self.liked_listeners.include?(listener)
+  end
 
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid

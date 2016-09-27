@@ -4,4 +4,6 @@ class Listener < ApplicationRecord
 	has_many :orders 
 	has_many :listener_timeships, :dependent => :destroy
 	has_many :availabletimes, :through => :listener_timeships
+	has_many :likeships,:dependent => :destroy
+	has_many :like_users,:through => :likeships, :source => :user
 end

@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925163310) do
+ActiveRecord::Schema.define(version: 20160927082723) do
 
   create_table "availabletimes", force: :cascade do |t|
     t.datetime "time_start"
     t.datetime "time_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likeships", force: :cascade do |t|
+    t.integer  "listener_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_likeships_on_user_id"
   end
 
   create_table "listener_timeships", force: :cascade do |t|

@@ -5,6 +5,22 @@
 	<li><%= number_to_currency(@listener.price, precision: 0) %></li>
 </ul>
 
+<div class="like">
+ <% if current_user %>
+	<% if current_user.likedListener?(@listener) %>
+	  <%= button_to "unlike",like_listener_path(@listener), :remote => true %>
+	<% else %>
+	  <%= button_to "like",like_listener_path(@listener),:remote => true %>
+	<% end %>
+ <% end	%>
+</div>
+<div class="like_num">
+ <%= @like_num %> like
+ <% @listener.like_users.each do |u| %> 
+ 	<%= u.email %>
+ <% end %>
+</div>
+
 <%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id) %> 
 
 <%= link_to "home", listeners_path %> 

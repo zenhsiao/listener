@@ -1,0 +1,10 @@
+<% if current_user.likedListener?(@listener) %>
+	$('.like input[type=submit]').val("unlike")
+<% else %>
+	$('.like input[type=submit]').val("like")
+<% end %>
+
+
+$('.like_num').html("<%= @like_num %>like <% @listener.like_users.each do |u| %> <%= u.email %> <% end %>")
+
+
