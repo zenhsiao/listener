@@ -1,7 +1,9 @@
- <div> 
+<div class="form-group">
   <%= f.label :time_start %>
-	<%= f.datetime_select :time_start %>
+	<%= f.datetime_select :time_start, :class => "form-control" %>
 </div>
+<div class="form-group">
 	<%= f.label :time_end %>
-	<%= f.datetime_select :time_end %>
-	<%= f.submit %>
+	<%= f.datetime_select :time_end, :class => "form-control" %>
+</div>
+	<%= f.submit :class => "btn btn-default" %>

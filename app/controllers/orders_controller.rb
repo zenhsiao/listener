@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 		
 		if @order.save
 			ListenerTimeship.where(id: params[:order][:listener_timeship_ids]).update_all order_id: @order.id
+			flash[:notice] = "新增訂單成功"
 			redirect_to user_order_path(current_user,@order)
 		else
 			#foo
@@ -42,6 +43,7 @@ class OrdersController < ApplicationController
 
 	def destroy
 		@order = Order.find(params[:id])
+		@order.listener_timeships.update(order_id: nil)
 		@order.destroy
 		redirect_to user_orders_path(current_user)
 	end

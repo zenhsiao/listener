@@ -1,3 +1,33 @@
 // Place all the styles related to the listeners controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listener_img img{
+	width: 100%;
+	height: auto;
+}
+
+.intro {
+	text-align: center;
+}
+
+.dl-horizontal dt {
+	text-align: left;
+}
+
+#banner{
+	height: 100vh;
+	background-color: #003459;
+	color:#fff;
+}
+#banner .container{
+  position: relative;
+	top: 45%;
+	width: 100%;
+	background-color:rgba(0,23,31,0.3);
+}
+
+.test {
+	height: 100vh;
+  background-image: image-url("test.jpg")
+}

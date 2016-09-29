@@ -1,10 +1,29 @@
-訂單列表
-<% @orders.each do |o| %>
-<li>
-<%= link_to o.id, user_order_path(current_user,o) %>
-<%= link_to "edit", edit_user_order_path(current_user,o) %>
-<%= link_to "delete", user_order_path(current_user,o), :method => "delete" %>
-</li>
-<% end %>
+<h3>訂單列表</h3>
+<table class="table">
+	<th>order_number</th>
+	<th>listener_name</th>
+	<th>amount</th>
+	<th>reservation_time</th>
+	<th>details</th>
 
+	<% @orders.each do |order| %>
+	<tr>
+	<td><%= order.id %></td>
+	<td><%= order.listener.name %></td>
+	<td><%= order.subtotal %></td>
+	<td>
+		<%  order.listener_timeships.each do |t| %>
+		<%=	t.availabletime.time_start %><br>
+		<%	end %>
+	</td>
+
+	<td>
+	<%= link_to "show", user_order_path(current_user,order),:class=>"btn btn-primary" %>
+	<%#= link_to "edit", edit_user_order_path(current_user,order),:class=>"btn btn-primary" %>
+	<%= link_to "delete", user_order_path(current_user,order), :method => "delete",:class=>"btn btn-danger" %>
+	</td>
+	</tr>
+	<% end %>
+
+</table>
 <%= link_to "home", listeners_path %>

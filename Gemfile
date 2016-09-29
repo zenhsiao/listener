@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 gem "paperclip"
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'bootstrap-sass'
+gem "select2-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

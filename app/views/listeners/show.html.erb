@@ -1,26 +1,44 @@
-<ul>
-	<li><%= @listener.name %></li>
-	<li><%= image_tag @listener.photo.url(:medium) %></li>
-	<li><%= @listener.description %></li>
-	<li><%= number_to_currency(@listener.price, precision: 0) %></li>
-</ul>
 
-<div class="like">
- <% if current_user %>
-	<% if current_user.likedListener?(@listener) %>
-	  <%= button_to "unlike",like_listener_path(@listener), :remote => true %>
-	<% else %>
-	  <%= button_to "like",like_listener_path(@listener),:remote => true %>
-	<% end %>
- <% end	%>
-</div>
-<div class="like_num">
- <%= @like_num %> like
- <% @listener.like_users.each do |u| %> 
- 	<%= u.email %>
- <% end %>
-</div>
+	<div class="col-md-12">
+		<%= image_tag @listener.photo.url(:medium) %>
+		<div class="like">
+			<% if current_user %>
+				<% if current_user.likedListener?(@listener) %>
+				  <%= button_to "unlike",like_listener_path(@listener), :remote => true, :class=>"btn btn-danger"  %>
+				<% else %>
+				  <%= button_to "like",like_listener_path(@listener),:remote => true, :class=>"btn btn-danger" %>
+				<% end %>
+			<% end	%>
+		</div>
+			
+		<div class="like_num">
+			<%= @like_num %> like
+			<% @listener.like_users.each do |u| %> 
+				<%= u.email %>
+			<% end %>
+		</div>
+	
 
-<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id) %> 
 
-<%= link_to "home", listeners_path %> 
+		<dl class="dl-horizontal">
+		  <dt>name</dt>
+		  <dd><%= @listener.name %></dd>
+		  <dt>description</dt>
+		  <dd><%= @listener.description %></dd>
+		  <dt>price</dt>
+		  <dd><%= number_to_currency(@listener.price, precision: 0) %></dd>
+		</dl>
+		  <div>
+		 		<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id) %>
+			</div>
+			<div>
+			<%= link_to "home", listeners_path %> 
+			</div>
+	</div>
+
+		
+
+
+	
+
+

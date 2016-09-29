@@ -1,6 +1,11 @@
+<table class= "table">
+<th>time options</th>
+<th>delete</th>
 <% @availabletimes.each do |t| %>  
-  <li><%= t.time_start %>
-  <%= link_to "delete", admin_availabletime_path(t),:method => :delete %></li>
+ <tr>
+  <td><%= t.time_start %></td>
+  <td><%= link_to "delete", admin_availabletime_path(t),:method => :delete %></td>
+  </tr>
 <% end %>
-
-<%= link_to "new", new_admin_availabletime_path %>
+</table>
+<%= link_to "new", new_admin_availabletime_path, :class => "btn btn-default"  %>

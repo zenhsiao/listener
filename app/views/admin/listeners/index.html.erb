@@ -1,16 +1,38 @@
-<ul>
-<% @listeners.each do |l| %>
-	<li>
-	<%= l.name %>
-	<%= l.description %>
-  <%= image_tag l.photo.url(:medium) %>
-	<%= link_to "edit", edit_admin_listener_path(l) %>
-	<%= link_to "delete", admin_listener_path(l), :method => "delete" %> 
-	</li>
-<% end %>
-</ul>
+<h1>Listener List</h1>
+<table class= "table">
+	<th>photo</th>
+	<th>name</th>	
+	<th>description</th>
+	<th>price</th>
+	<th>AvailableTime</th>
+	<th>content edit</th>
+	<% @listeners.each do |l| %>
+		<tr>
+			<td><%= image_tag l.photo.url(:medium) %></td>
+			<td><%= l.name %></td>
+			<td><%= l.description %></td>
+			<td><%= l.price %></td>
+		  <td>
+		  	<% l.availabletimes.each do |t| %>
+					<%= t.time_start %> <br>
+		  	<% end %>
+		  </td>
+		  <td>
+			<%= link_to "edit", edit_admin_listener_path(l) %>
+			<%= link_to "delete", admin_listener_path(l), :method => "delete" %> 
+			</td>
+		</tr>
+	<% end %>
+</table>
 
-<%= link_to "new", new_admin_listener_path %>
-<%= link_to "時段種類", admin_availabletimes_path %>
-
-<%= link_to "前台", listeners_path %>
+<div>
+<%= link_to "新增listener", new_admin_listener_path ,:class=>"btn btn-primary" %>
+</div>
+<br>
+<div>
+<%= link_to "時段種類管理", admin_availabletimes_path, :class=>"btn btn-primary" %>
+</div>
+<br>
+<div>
+<%= link_to "前台", listeners_path,:class=>"btn btn-primary" %>
+</div>
