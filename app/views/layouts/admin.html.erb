@@ -9,7 +9,36 @@
   </head>
 
   <body>
-  管理者頁面
-    <%= yield %>
+    <h1>管理者頁面</h1>
+    <div class="container">
+
+       <div class="pull-right clearfix">
+      <% if current_user %>
+        <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
+        <%= link_to('修改密碼', edit_registration_path(:user)) %>
+      <% else %>
+        <%= link_to('註冊', new_registration_path(:user)) %> |
+        <%= link_to('一般登入', new_session_path(:user)) %>
+         <%= link_to "Facebook登入", user_facebook_omniauth_authorize_path %>
+      <% end %>
+
+      <%= link_to "訂單紀錄", user_orders_path(current_user) if current_user %>
+    </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <% if flash[:notice].present? %>
+            <div class="alert alert-success" role="alert"><%= notice %>
+            </div>
+          <% end %>
+          <% if flash[:alert].present? %>
+            <div class="alert alert-danger" role="alert">
+              <%= alert %>
+            </div> 
+          <% end %>
+           <%= yield %>
+        </div>
+      </div> 
+    </div> 
   </body>
 </html>

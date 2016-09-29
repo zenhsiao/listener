@@ -12,16 +12,25 @@ class Admin::ListenersController < ApplicationController
 
 	def create
 		@listener = Listener.new(listener_params)
-		@listener.save
-		redirect_to admin_listeners_path
+		if @listener.save
+			flash[:notice] = "新增成功"
+			redirect_to admin_listeners_path
+		else
+			render :action => :new
+		end
+		
 	end
 
 	def edit
 	end
 
 	def update
-    @listener.update(listener_params)
-    redirect_to admin_listeners_path
+    if @listener.update(listener_params)
+    	flash[:notice] = "更新成功"
+    	redirect_to admin_listeners_path
+    else
+    	render :action => :edit
+    end
 	end
 
 	def destroy

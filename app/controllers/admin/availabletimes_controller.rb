@@ -9,8 +9,12 @@ class Admin::AvailabletimesController < ApplicationController
 
 	def create
 		@availabletime = Availabletime.new(availabletime_params)
-		@availabletime.save
-		redirect_to admin_availabletimes_path
+		if @availabletime.save
+			flash[:notice]="新增成功"
+			redirect_to admin_availabletimes_path
+		else	
+			render :action => :new
+		end
 	end
 
 	def destroy

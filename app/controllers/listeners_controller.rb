@@ -1,4 +1,5 @@
 class ListenersController < ApplicationController
+	before_action :authenticate_user!, :only=>[:like]
 	def index
 		@listeners = Listener.all
 	end
