@@ -4,9 +4,9 @@
 		<div class="like">
 			<% if current_user %>
 				<% if current_user.likedListener?(@listener) %>
-				  <%= button_to "unlike",like_listener_path(@listener), :remote => true, :class=>"btn btn-danger"  %>
+				  <%= link_to "unlike",like_listener_path(@listener),:method => "post", :remote => true, :class=>"btn btn-primary"  %>
 				<% else %>
-				  <%= button_to "like",like_listener_path(@listener),:remote => true, :class=>"btn btn-danger" %>
+				  <%= link_to "like",like_listener_path(@listener),:method => "post",:remote => true, :class=>"btn btn-primary" %>
 				<% end %>
 			<% end	%>
 		</div>
@@ -28,15 +28,35 @@
 		  <dt>price</dt>
 		  <dd><%= number_to_currency(@listener.price, precision: 0) %></dd>
 		</dl>
-		  <div>
-		 		<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id) %>
-			</div>
 			<div>
-			<%= link_to "home", listeners_path %> 
+			  <% if current_user %>
+			 		<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id),  :class=>"btn btn-warning"   %>
+			 	<% else %>
+			 		<%= link_to "預約", new_user_session_path, :class=>"btn btn-warning" %>
+			 	<% end %>	
+			</div>
+			<br>
+			<div>
+			<%= link_to "home", listeners_path, :class=>"btn btn-default" %> 
 			</div>
 	</div>
 
+<!-- 	<div id="chart">
 		
+	</div> -->
+
+<script>
+	var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+      columns: [
+        ['data1', 30, 200, 100, 400, 150, 250],
+        ['data2', 50, 20, 10, 40, 15, 25]
+      ]
+    }
+});
+
+</script>
 
 
 	
