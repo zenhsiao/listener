@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927082723) do
+ActiveRecord::Schema.define(version: 20161004075544) do
 
   create_table "availabletimes", force: :cascade do |t|
     t.datetime "time_start"
@@ -57,8 +57,19 @@ ActiveRecord::Schema.define(version: 20160927082723) do
     t.integer  "price"
     t.integer  "quantity"
     t.integer  "subtotal"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "paid",        default: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "payment_method"
+    t.integer  "amount"
+    t.boolean  "paid",           default: false
+    t.text     "params"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|

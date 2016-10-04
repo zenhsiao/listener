@@ -11,13 +11,20 @@ Rails.application.routes.draw do
  end
  
  resources :users do
- 	resources :orders
+ 	resources :orders do
+		member do
+			post :checkout_pay2go
+		end
+ 	end
  end
 
  namespace :admin do
  	resources :listeners
  	resources :availabletimes
  end
- 
+
+ post 'pay2go/return'
+ post 'pay2go/notify'
+
  root to: "listeners#index"
 end
