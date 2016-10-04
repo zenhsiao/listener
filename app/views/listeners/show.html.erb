@@ -1,7 +1,9 @@
 
-	<div class="col-md-12">
+	<div class="row	profile">
+	  <div class="photo col-md-12">
 		<%= image_tag @listener.photo.url(:medium) %>
-		<div class="like">
+		</div>
+		<div class="like col-md-12">
 			<% if current_user %>
 				<% if current_user.likedListener?(@listener) %>
 				  <%= link_to "unlike",like_listener_path(@listener),:method => "post", :remote => true, :class=>"btn btn-primary"  %>
@@ -11,7 +13,7 @@
 			<% end	%>
 		</div>
 			
-		<div class="like_num">
+		<div class="like_num col-md-12">
 			<%= @like_num %> like
 			<% @listener.like_users.each do |u| %> 
 				<%= u.email %>
@@ -20,7 +22,7 @@
 	
 
 
-		<dl class="dl-horizontal">
+		<dl class="dl-horizontal description col-md-12">
 		  <dt>name</dt>
 		  <dd><%= @listener.name %></dd>
 		  <dt>description</dt>
@@ -28,16 +30,12 @@
 		  <dt>price</dt>
 		  <dd><%= number_to_currency(@listener.price, precision: 0) %></dd>
 		</dl>
-			<div>
+			<div class="book">
 			  <% if current_user %>
 			 		<%= link_to "預約", new_user_order_path(current_user,:listener_id => @listener.id),  :class=>"btn btn-warning"   %>
 			 	<% else %>
 			 		<%= link_to "預約", new_user_session_path, :class=>"btn btn-warning" %>
 			 	<% end %>	
-			</div>
-			<br>
-			<div>
-			<%= link_to "home", listeners_path, :class=>"btn btn-default" %> 
 			</div>
 	</div>
 

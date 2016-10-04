@@ -34,6 +34,7 @@ gem "select2-rails"
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 gem "mysql2"
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

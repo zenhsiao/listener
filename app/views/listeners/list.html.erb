@@ -1,0 +1,30 @@
+<h1>Listener List</h1>
+<table class= "table">
+	<th>photo</th>
+	<th>name</th>	
+	<th>description</th>
+	<th>price</th>
+	<th>AvailableTime</th>
+	<th>Book</th>
+	<% @listeners.each do |l| %>
+		<tr>
+			<td><%= image_tag l.photo.url(:medium) %></td>
+			<td><%= l.name %></td>
+			<td><%= l.description %></td>
+			<td><%= l.price %></td>
+		  <td>
+		  	<% l.availabletimes.each do |t| %>
+					<%= t.time_start %> <br>
+		  	<% end %>
+		  </td>
+		  <td>
+			  <% if current_user %>
+			 		<%= link_to "預約", new_user_order_path(current_user,:listener_id => l.id),  :class=>"btn btn-warning"   %>
+			 	<% else %>
+			 		<%= link_to "預約", new_user_session_path, :class=>"btn btn-warning" %>
+			 	<% end %>	
+			</td>
+		</tr>
+	<% end %>
+</table>
+<%= paginate @listeners %>

@@ -1,4 +1,5 @@
 class Admin::AvailabletimesController < ApplicationController
+	layout "admin"
 	def index
 		@availabletimes = Availabletime.all
 	end

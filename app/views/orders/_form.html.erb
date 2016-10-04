@@ -1,10 +1,11 @@
 <form>
-<div class="form-group">
+<!-- <div class="form-group">
 	<%= f.label :quantity %>
 	<%= f.text_field :quantity, :class => "form-control" %>
-</div>
+</div> -->
 <div class="form-group">
-	<%= f.select :listener_timeship_ids, l.listener_timeships.unorder.map{ |x| [ x.availabletime.time_start, x.id] }, {}, :multiple => true, :class => "form-control" %>
+	<%= f.label :選擇時間 %>
+	<%= f.select :listener_timeship_ids, l.listener_timeships.unorder.map{ |x| [ x.availabletime.time_start, x.id] }, {}, :multiple => true, prompt: "Select something" , :class => "form-control" %>
 </div>
 
 <div class="form-group">
@@ -13,5 +14,7 @@
 </form>
 
 <script>
-   $("#order_listener_timeship_ids").select2();
+   $("#order_listener_timeship_ids").select2({
+   	placeholder: 'Select an option'
+   });
 </script>

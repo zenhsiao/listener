@@ -1,5 +1,6 @@
 class ListenersController < ApplicationController
 	before_action :authenticate_user!, :only=>[:like]
+	layout "home", :only=>[:index]
 	def index
 		@listeners = Listener.all
 	end
@@ -7,6 +8,10 @@ class ListenersController < ApplicationController
 	def show
 		@listener = Listener.find(params[:id])
 		@like_num = Likeship.where(:listener => @listener).count
+	end
+
+	def list
+		@listeners = Listener.page(params[:page]).per(5)
 	end
 
 	def like

@@ -18,8 +18,13 @@ class OrdersController < ApplicationController
 	def create
 		@listener = Listener.find(params[:listener_id])
 		@order = @listener.orders.new(order_params)
+
+	 #  if params[:order][:listener_timeship_ids] = {}
+		# 	  render :action => "new"
+		# else
 		@order.user = current_user
 		@order.price = @listener.price
+		@order.quantity =params[:order][:listener_timeship_ids].count - 1
 		@order.subtotal = @order.price * @order.quantity
 		
 		if @order.save
@@ -29,6 +34,8 @@ class OrdersController < ApplicationController
 		else
 			#foo
 		end
+
+		# end
 	end
 
 	def edit

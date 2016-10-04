@@ -7,7 +7,7 @@
 	height: auto;
 }
 
-.intro {
+.listener_intro {
 	text-align: center;
 }
 
@@ -19,7 +19,12 @@
 	height: 100vh;
 	background-color: #003459;
 	color:#fff;
+	
 }
+#banner h1{
+	font-size:50px;
+}
+
 #banner .container{
   position: relative;
 	top: 45%;
@@ -27,7 +32,28 @@
 	background-color:rgba(0,23,31,0.3);
 }
 
+.like{
+	margin-top: 10px;
+}
+
+.description{
+	margin-top: 10px;
+}
+
+.profile{
+  position: relative;
+	left:37%;
+}
+
+
+.book{
+  position: relative;
+	left:20%;
+}
+
 .test {
 	height: 100vh;
-  background-image: image-url("test.jpg")
+  background-image: image-url("test.jpg");
+  background-color: #003459;
 }
+

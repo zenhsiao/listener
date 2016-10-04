@@ -11,9 +11,9 @@
 		<dt>price</dt>
 		<dd><%= number_to_currency(@order.listener.price, precision: 0) %></dd>
 		<dt>quantity</dt>
-		<dd><%= number_to_currency(@order.subtotal, precision: 0) %></dd>
+		<dd><%= @order.quantity %></dd>
 		<dt>subtotal</dt>
-		<dd><%= @order.subtotal%></dd>
+		<dd><%= number_to_currency(@order.subtotal, precision: 0) %></dd>
 		<dt>time		
 		<% @order.listener_timeships.each do |listener_timeship| %>
 			<dd><%= listener_timeship.availabletime.time_start %></dd>
@@ -26,6 +26,3 @@
 </div>
 
 
-<div>
-<%= link_to "home", listeners_path %> 
-</div>
