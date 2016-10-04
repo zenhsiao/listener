@@ -13,8 +13,8 @@
 			<td><%= l.description %></td>
 			<td><%= l.price %></td>
 		  <td>
-		  	<% l.availabletimes.each do |t| %>
-					<%= t.time_start %> <br>
+		  	<% l.listener_timeships.where(:order_id => nil).each do |t| %>
+					<%= t.availabletime.time_start %> <br>
 		  	<% end %>
 		  </td>
 		  <td>
