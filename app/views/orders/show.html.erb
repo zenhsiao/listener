@@ -25,14 +25,14 @@
 
 </div>
 <div>
- <h3>結帳方式</h3>
+ 
 </div>
 <% if @order.paid? %>
-
+  <h3>結帳狀態</h3>
   <p>已付款成功</p>
 
 <% else %>
-
+  <h3>付款方式</h3>
   <p>
   <% Payment::PAYMENT_METHODS.each do |pm| %>
     <%= link_to t(pm, :scope => "PaymentPay2go"), checkout_pay2go_user_order_path(current_user, @order, :payment_method => pm), :class => "btn btn-primary btn-lg", :method => :post %>
