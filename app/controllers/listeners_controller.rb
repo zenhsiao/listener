@@ -8,6 +8,7 @@ class ListenersController < ApplicationController
 	def show
 		@listener = Listener.find(params[:id])
 		@like_num = Likeship.where(:listener => @listener).count
+		@listeners = Listener.all
 	end
 
 	def list

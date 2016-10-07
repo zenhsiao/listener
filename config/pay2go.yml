@@ -8,7 +8,7 @@ default: &default
   hash_key: 1eufhGdO0YAIZxE6hpugWScmaZRQ5Pz7
   hash_iv: 33mlKA9LzJtyh8Fz
   url: https://capi.pay2go.com/MPG/mpg_gateway
-  notify_url: 'http://requestb.in/pkhj27pk'
+  notify_url: 'http://zenpractice5022.cloudapp.net/users/1/orders'
 
 development:
   <<: *default
