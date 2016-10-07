@@ -38,6 +38,10 @@ class Admin::ListenersController < ApplicationController
 		redirect_to admin_listeners_path
 	end
 
+	def test
+		
+	end
+
 	private
 	def listener_params
 		params.require(:listener).permit(:name,:description,:skype_id,:price, :photo, :availabletime_ids=>[])

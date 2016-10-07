@@ -19,7 +19,11 @@ Rails.application.routes.draw do
  end
 
  namespace :admin do
- 	resources :listeners
+ 	resources :listeners do
+	 	collection do
+	 		post :test
+	 	end
+	end 	
  	resources :availabletimes
  end
 
